@@ -1,0 +1,84 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install Frontend",
+      "type": "shell",
+      "command": "npm install",
+      "options": {
+        "cwd": "${workspaceFolder}/app/frontend"
+      }
+    },
+    {
+      "label": "Install .NET API",
+      "type": "shell",
+      "command": "dotnet restore",
+      "options": {
+        "cwd": "${workspaceFolder}/app/backend/web-api"
+      }
+    },
+    {
+      "label": "Install FastAPI",
+      "type": "shell",
+      "command": "python -m venv .venv; .\\.venv\\Scripts\\Activate.ps1; pip install -r requirements.txt",
+      "options": {
+        "cwd": "${workspaceFolder}/app/backend/ml-service",
+        "shell": {
+          "executable": "powershell",
+          "args": ["-NoProfile", "-Command"]
+        }
+      }
+    },
+    {
+      "label": "Start Frontend",
+      "type": "shell",
+      "command": "npm start",
+      "options": {
+        "cwd": "${workspaceFolder}/app/frontend"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Start .NET API",
+      "type": "shell",
+      "command": "dotnet run",
+      "options": {
+        "cwd": "${workspaceFolder}/app/backend/web-api"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Start FastAPI",
+      "type": "shell",
+      "command": ".\\.venv\\Scripts\\Activate.ps1; uvicorn main:app --reload",
+      "options": {
+        "cwd": "${workspaceFolder}/app/backend/ml-service",
+        "shell": {
+          "executable": "powershell",
+          "args": ["-NoProfile", "-Command"]
+        }
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Install All Services",
+      "dependsOn": [
+        "Install Frontend",
+        "Install .NET API",
+        "Install FastAPI"
+      ],
+      "dependsOrder": "parallel",
+      "type": "shell"
+    },
+    {
+      "label": "Start All Services",
+      "dependsOn": [
+        "Start Frontend",
+        "Start .NET API",
+        "Start FastAPI"
+      ],
+      "dependsOrder": "parallel",
+      "type": "shell"
+    }
+  ]
+}
