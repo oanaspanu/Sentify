@@ -1,0 +1,114 @@
+.menu {
+    background-color: var(--color5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100vw;
+}
+
+.menu-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-title .logo {
+    width: 40px;
+    height: auto;
+    filter: brightness(300%) contrast(50%);
+}
+
+.menu-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.hamburger-icon div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.dropdown-toggle {
+    background-color: transparent;
+    color: var(--color1);
+    border: none;
+    font-size: 1.2em;
+    padding: 12px 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 500;
+}
+
+.dropdown-toggle:hover {
+    background-color: var(--color4);
+    border-radius: 5px;
+    color: var(--color1);
+}
+
+.dropdown-content {
+    position: absolute;
+    left: -50px;
+    background-color: var(--color4);
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+    z-index: 5;
+}
+
+.menu-link {
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+.menu-link:hover {
+    background-color: var(--color3);
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        gap: 10px;
+    }
+
+    .menu-title {
+        font-size: 1.7em;
+    }
+
+    .menu-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .dropdown-content {
+        top: 150%;
+        left: -100px;
+    }
+}
