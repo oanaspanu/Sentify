@@ -113,14 +113,12 @@ namespace AnalysisAPI.Controllers
             }
         }
 
-        // Validate YouTube URL
         private bool IsYouTubeUrl(string url)
         {
             return Uri.TryCreate(url, UriKind.Absolute, out var uri)
                 && (uri.Host.Contains("youtube.com") || uri.Host.Contains("youtu.be"));
         }
 
-        // Extract video ID from standard or short URL
         private string ExtractVideoIdFromUrl(string url)
         {
             var uri = new Uri(url);
