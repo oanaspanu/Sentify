@@ -97,7 +97,7 @@ function History() {
   };
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p style={{ color: "var(--error-color)" }}>{error}</p>;
+  if (error) return <p className="error-message">{error}</p>;
 
   return (
     <>
